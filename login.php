@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute([$login]);
     $user = $stmt->fetch();
 
-    //проверка хэша или прямого совпадения для демо-пароля админа
+    //проверка хэша или прямого совпадения для пароля админа
     if ($user && (password_verify($password, $user['password']) || $password === 'Demo20' && $login === 'Admin26')) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['role'] = $user['role'];
